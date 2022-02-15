@@ -1,4 +1,5 @@
 #i!/bin/bash
+#for ceph version 13.2.8 mimic
 ceph pg dump | awk '
  /^PG_STAT/ { col=1; while($col!="UP") {col++}; col++ }
  /^[0-9a-f]+\.[0-9a-f]+/ { match($0,/^[0-9a-f]+/); pool=substr($0, RSTART, RLENGTH); poollist[pool]=0;
